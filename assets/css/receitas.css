@@ -1,0 +1,54 @@
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.receita {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 10px 0;
+    width: 130%; /* Aqui muda o tamanho da barra horizontalmente (ou não ;-;) */
+    padding: 10px;
+    max-width: 1300px;
+    background-color: #f9f9f9;
+}
+
+.receita, a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.receita:hover {
+    background-color: #e0e0e0;
+    cursor: pointer;
+}
+
+.imagem {
+    width: 100px;
+    height: 100px;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+
+.conteudo {
+    flex-grow: 1;
+}
+
+.titulo {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.descricao {
+    font-size: 14px;
+    color: #666;
+}

@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalnia:wght@100..700&display=swap');
+
+.fundo{
+    background-color:  #E6E6E6;
+}
+
+.titulo{
+    display: flex;
+    justify-content: center;
+    font-family: 'Kalnia', cursive;
+    font-weight: 500;
+    font-size: 64px;
+    padding: 50px;
+}
+
+.formulario{
+    font-family: 'Kalnia', cursive;
+    font-weight: 500;
+    font-size: 18px;
+    padding: 50px;
+    padding-bottom: 50px;
+}
+
+.botaoEnviar{
+    font-family:  'kalnia', cursive;
+    bottom: 20px;
+    right: 20px;
+    background-color: #A09482;
+    color: white;
+    border: none;
+    width: 110px;
+    height: 50px;
+    border-radius: 40%;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.botaoCriarReceita{
+    padding-bottom: 50px;
+}
+
+.botaoEnviar:hover{
+    background-color: #C4C4C4;
+}
+
+.botaoAnexar{
+    font-family:  'kalnia', cursive;
+    background-color: #A09482;
+    color: white;
+    font-weight: 500;
+    border-radius: 20px;
+    border: none;
+    right: 20px;
+    width: 100px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 10px;
+}
+
+.posicaoAnexar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.visualizacao-imagem {
+    width: 200px; 
+    height: 150px; 
+    object-fit: cover; /* Mantém a proporção sem distorcer */
+    margin: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}

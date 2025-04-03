@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalnia:wght@100..700&display=swap');
+
+.fundo{
+    background-color: #F5C276;
+}
+
+.login{
+    display: flex;
+    justify-content: center;
+    font-family: 'Kalnia', cursive;
+    font-weight: 500;
+    font-size: 64px;
+    padding: 30px;
+}
+
+.credenciais{
+    font-family: 'Kalnia', cursive;
+    font-weight: 500;
+    font-size: 18px;
+    padding: 50px;
+    padding-bottom: 50px;
+}
+
+.botaoLogin{
+    font-family:  'kalnia', cursive;
+    bottom: 20px;
+    right: 20px;
+    background-color: #A09482;
+    color: white;
+    border: none;
+    width: 110px;
+    height: 50px;
+    border-radius: 40%;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.botaoLogin:hover{
+    background-color: #C4C4C4;
+}
+

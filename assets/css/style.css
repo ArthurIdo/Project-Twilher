@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalnia:wght@100..700&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.fundo{
+    background-color: #E6E6E6;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 5%;
+    background-color: #F5C276;
+    margin: -16px;
+    padding-right: 10%;
+}
+
+.nav_links{
+    display: inline-block;
+    padding: 0 20px;
+}
+
+.nav_links a{
+    font-family: 'Kalnia', cursive;
+    font-weight: 500;
+    font-size: 20px;
+    color: #000;
+    margin: 0;
+    padding: 15px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.logo{
+    cursor: pointer;
+    width: 150px;
+    display: flex;
+    justify-content: left;
+}
+
+.perfilnav{
+    font-weight: 500;
+    font-size: 20px;
+    color: #000;
+    font-family: kalnia, cursive;
+    text-decoration: none;
+    cursor: pointer;
+    width: 40px;
+}
+
+.home{
+    display: flex;
+    justify-content: center;
+    font-family: 'Kalnia', cursive;
+    font-weight: 500;
+    font-size: 64px;
+    padding: 50px;
+    padding-bottom: 50px;
+}
+
+.card1{
+    margin-left: 70px;
+    margin-right: 70px;
+}
+
+.card1:hover{
+    transform: scale(1.1);
+    transition: 1.0s;
+}
+
+.texto{
+    font-family:  'kalnia', cursive;
+    font-size: 32px;
+    padding: 10px;
+    padding-bottom: 50px;
+    text-align: center;
+}
+
+.rodape{
+    margin: -16px;
+    padding-bottom: 200%;
+    background-color: #F5C276;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    font-family: 'kalnia', cursive;
+    font-size: 14px;
+}
+
+.perfil{
+    padding: 80px;
+    padding-bottom: 10px;
+}
+
+.perfil img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: block;
+}
+
+.perfil p{
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Kalnia', cursive;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.sobreMim h1{
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Kalnia', cursive;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+.sobreMim p{
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Kalnia', cursive;
+    font-weight: 500;
+}
+
+.sobreMim{
+    position: absolute; /* Faz com que o background preencha toda a tela, porém os itens dela ficam "transparentes" para os outros elementos */
+    left: 0;
+    width: 100%;
+    height: 210px; /* Ajuste a altura conforme necessário */
+    margin: 0;
+    padding: 40px;
+    padding-top: 20px;
+    background-color: #D9D9D9;
+    z-index: -1;
+}
+
+.bandeiras{
+    display: flex;
+    justify-content: center;
+    padding: 70px;
+    padding-top: 10px;
+}
+
+.tituloMinhasReceitas {
+    padding-top: 270px; /* Mesmo valor da altura do fundo do "sobreMim" + a distância que preferir (para que ele não sobreponha o "sobre mim")*/
+    text-align: center;
+    padding-bottom: 30px;
+    font-family: 'Kalnia';
+    font-weight: 500;
+}
+
+.container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.receita {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin: 10px 0;
+    width: 130%; /* Aqui muda o tamanho da barra horizontalmente */
+    padding: 10px;
+    max-width: 1200px;
+    background-color: #f9f9f9;
+}
+
+.receita, a{
+    text-decoration: none;
+    color: inherit;
+}
+
+.receita:hover {
+    background-color: #e0e0e0;
+    cursor: pointer;
+}
+
+.imagem {
+    width: 100px;
+    height: 100px;
+    background-color: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border-radius: 5px;
+    margin-right: 15px;
+}
+
+.conteudo {
+    flex-grow: 1;
+}
+
+.titulo {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.descricao {
+    font-size: 14px;
+    color: #666;
+}
+
+
+/* BOTÃO CRIAR(canto inferior direito) */
+.botaoCriar {
+    font-family:  'kalnia', cursive;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #F5C276;
+    color: white;
+    border: none;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.botaoCriar:hover {
+    background-color: #f5cc90;
+}
+/* FIM BOTÃO CRIAR */
