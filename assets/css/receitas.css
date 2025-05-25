@@ -17,7 +17,7 @@
     background-color: #f9f9f9;
 }
 
-.receita, a{
+.receita, a, button{
     text-decoration: none;
     color: inherit;
 }
@@ -46,6 +46,8 @@
 .titulo {
     font-size: 18px;
     font-weight: bold;
+    display: flex;
+    justify-content: left;
 }
 
 .descricao {

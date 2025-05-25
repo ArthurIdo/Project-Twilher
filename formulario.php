@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['usuario'])) {
+    header('Location: login.php');
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -15,7 +23,7 @@
         crossorigin="anonymous"></script>
 </head>
 
-<body class="fundo p-3 m-0 border-0 bd-example m-0 border-0 bd-example-cssgrid">
+<body class="fundo m-0 border-0 bd-example m-0 border-0 bd-example-cssgrid">
 
     <!-- INICIO NAVBAR -->
     <header>
@@ -23,15 +31,83 @@
 
         <div class="nav_links">
             <a href="index.html">Home</a>
-            <a href="receitas.html">Receitas</a>
+            <a href="receitas.php">Receitas</a>
             <a href="exibirPublicacao.php">Comunidade </a>
         </div>
 
-        <a class="perfilnav" href="perfil.html">Perfil</a>
+        <a class="perfilnav" href="perfil.php">Perfil</a>
         <!-- FIM NAVBAR -->
     </header>
 
-    <section>
+    <br>
+
+    <div class="formularioFundo">
+        <div class="home">
+            <p>FORMULÁRIO PARA ENVIO DE RECEITA</p>
+        </div>
+
+        <form action="enviarReceita.php" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="nome_receita" class="form-label">Nome da Receita</label>
+                <input type="text" class="form-control" id="nome_receita" name="nome_receita" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="pais_origem" class="form-label">País de Origem</label>
+                <select class="form-select" id="pais_origem" name="pais_origem" required>
+                    <option selected disabled value="">Escolha...</option>
+                    <option value="Brasil">Brasil</option>
+                    <option value="México">México</option>
+                    <option value="Itália">Itália</option>
+                    <option value="Japão">Japão</option>
+                    <option value="China">China</option>
+                    <option value="Índia">Índia</option>
+                    <option value="França">França</option>
+                    <option value="Turquia">Turquia</option>
+                    <option value="Mundo">Mundo</option>
+                    <option value="Criação">Criação</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="modo_preparo" class="form-label">Passo a passo:</label>
+                <textarea class="form-control" id="modo_preparo" name="modo_preparo" rows="4" required></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="imagem" class="form-label">Imagem da Receita</label>
+                <input class="form-control" type="file" id="imagem" name="imagem" accept="image/*" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="tempo_preparo" class="form-label">Tempo de Preparo</label>
+                <select class="form-select" id="tempo_preparo" name="tempo_preparo" required>
+                    <option selected disabled value="">Escolha...</option>
+                    <option>5 Min</option>
+                    <option>6 Min</option>
+                    <option>7 Min</option>
+                    <option>8 Min</option>
+                    <option>9 Min</option>
+                    <option>10 Min</option>
+                    <option>15 Min</option>
+                    <option>+20 Min</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Enviar Receita</button>
+
+            <div style="margin-top: 15px;">
+                <a href="receitas.php" class="back-link">← Voltar para Receitas</a>
+                <br>
+                <a href="perfil.php" class="back-link">← Voltar Perfil</a>
+            </div>
+
+        </form>
+    </div>
+
+    <br><br>
+
+    <!-- <section>
         <div class="">
             <div class="titulo">
                 <p>FORMULÁRIO PARA ENVIO DE RECEITA</p>
@@ -94,19 +170,19 @@
                 <p class="text-center"><button class="botaoEnviar" onclick="buttonClicked()">ENTRAR</button></p>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <section>
         <footer class="rodape">
             <p><img src="assets/img/colherIcon.png" alt="colher" width="200px"></p>
             <p>Todos os direitos reservados</p>
-            <p>Desenvolvido por: <a href=""></a></p>
-            <p>Data: </p>
-            <p>Versão: </p>
+            <p>Desenvolvido por: Arthur Ido -- André Yuki -- Antony Schimit<a href=""></a></p>
+            <p style="font-family: monospace;">Data: 14/03</p>
+            <p style="font-family: monospace;">Versão: Beta</p>
         </footer>
     </section>
 
-    <script src="assets/js/script.js"></script>
+    <script src="assets/js/botaoCriar.js"></script>
 </body>
 
 </html>

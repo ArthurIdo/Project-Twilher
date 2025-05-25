@@ -1,46 +1,128 @@
+<?php
+include_once('config.php');
+session_start();
+
+if (isset($_POST['submit'])) {
+    $email = $_POST['email'];
+    $senha = $_POST['senha'];
+
+    $sql = "SELECT * FROM usuarios WHERE email = ?";
+    $stmt = $conexao->prepare($sql);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $res = $stmt->get_result();
+
+    if ($res->num_rows > 0) {
+        $usuario = $res->fetch_assoc();
+        if (password_verify($senha, $usuario['senha'])) {
+            $_SESSION['usuario'] = $usuario['nome'];
+            $_SESSION['nivel'] = $usuario['nivel'];
+            header('Location: perfil.php');
+            exit();
+        } else {
+            $erro = "Email ou senha inválidos.";
+        }
+    } else {
+        $erro = "Email ou senha inválidos.";
+    }
+}
+?>
 <!DOCTYPE html>
-<html lang="pt-BR">
-
+<html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="assets/css/login.css">
-    <link rel="stylesheet" href="assets/css/navbarStyle.css">
-    <link rel="shortcut icon" href="assets/img/colherFavicon.png" type="image/x-icon">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login - Twilher</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Kalnia:wght@100..700&display=swap');
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body, html {
+            height: 100%;
+            font-family: 'Kalnia', cursive;
+            background-color: #E6E6E6;
+        }
+
+        .fundo {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        .formularioFundo {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        h2 {
+            font-weight: 500;
+            font-size: 28px;
+            margin-bottom: 25px;
+            color: #000;
+            text-align: center;
+        }
+
+        input.form-control {
+            font-family: 'Kalnia', cursive;
+            font-size: 18px;
+            margin-bottom: 20px;
+            height: 45px;
+        }
+
+        input[type="submit"] {
+            background: linear-gradient(45deg, #FFA500, #FF7F50);
+            border: none;
+            color: white;
+            font-family: 'Kalnia', cursive;
+            font-weight: 600;
+            font-size: 18px;
+            padding: 12px 0;
+            border-radius: 8px;
+            width: 100%;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        input[type="submit"]:hover {
+            background: linear-gradient(45deg, #FFB347, #FF6F61);
+        }
+
+        .alert-danger {
+            font-family: 'Kalnia', cursive;
+            font-weight: 500;
+            font-size: 16px;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-radius: 6px;
+        }
+    </style>
 </head>
-
-<body class="fundo">
-    <section>
-
-        <div class="fundo">
-            <div class="login">
-                <p>LOGIN</p>
-            </div>
-
-            <div class="credenciais">
-                <form action="registroLogin.php" method="POST">
-
-                <div class="p-4">
-                    <input type="email" id="email" name="email" placeholder="Email" required>
-                </div>
-
-                <div class="p-4">
-                    <input type="password" id="senha" name="senha" placeholder="Senha" required>
-                </div>
-
-                <div>
-                <input class="botaoLogin" type="submit" name="submit" value="Enviar">
-            </div>
-                </form>
-            </div>
-        </div>
-    </section>
+<body>
+    <div class="fundo">
+        <main class="formularioFundo">
+            <h2>Login</h2>
+            <?php if (!empty($erro)) : ?>
+                <div class="alert alert-danger"><?= htmlspecialchars($erro) ?></div>
+            <?php endif; ?>
+            <form action="" method="POST" novalidate>
+                <input type="email" name="email" class="form-control" placeholder="Email" required autofocus />
+                <input type="password" name="senha" class="form-control" placeholder="Senha" required />
+                <input type="submit" name="submit" value="Entrar" />
+            </form>
+        </main>
+    </div>
 </body>
 </html>
+
+

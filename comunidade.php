@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['usuario'])) {
+    header('Location: login.php');
+    exit();
+}
+?>
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -14,7 +22,7 @@
         crossorigin="anonymous"></script>
 </head>
 
-<body class="fundo p-3 m-0 border-0 bd-example m-0 border-0 bd-example-cssgrid">
+<body class="fundo m-0 border-0 bd-example m-0 border-0 bd-example-cssgrid">
 
     <!-- INICIO NAVBAR -->
     <header>
@@ -22,16 +30,36 @@
 
         <div class="nav_links">
             <a href="index.html">Home</a>
-            <a href="receitas.html">Receitas</a>
+            <a href="receitas.php">Receitas</a>
             <a href="exibirPublicacao.php">Comunidade </a>
         </div>
 
         <a class="perfilnav" href="perfil.php">Perfil</a>
         <!-- FIM NAVBAR -->
     </header>
+<br>
+    <div class="formularioFundo">
+    <div class="home">
+        <p>ENVIE UM COMENTARIO</p>
+    </div>
+
+    <form action="publicar.php" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="titulo" class="form-label">Titulo: </label>
+            <input type="text" class="form-control" id="titulo" name="titulo" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="conteudo" class="form-label">Conteúdo: </label>
+            <textarea class="form-control" id="conteudo" name="conteudo" rows="4" required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Publicar</button>
+    </form>
+</div>
 
 
-    <h1>Publicar Artigo</h1>
+    <!-- <h1>Publicar Artigo</h1>
     <form action="publicar.php" method="POST">
         <label for="titulo">Título:</label>
         <input type="text" id="titulo" name="titulo" required><br><br>
@@ -40,25 +68,23 @@
         <textarea id="conteudo" name="conteudo" rows="6" cols="40" required></textarea><br><br>
 
         <input type="submit" value="Publicar">
-    </form>
+    </form> -->
 
 
         <div>
             <button class="botaoCriar" onclick="abrirNovaAba()">CRIAR</button>
         </div>
 
-
-    <section>
-        <footer class="rodape">
-            <p><img src="assets/img/colherIcon.png" alt="colher" width="200px"></p>
-            <p>Todos os direitos reservados</p>
-            <p>Desenvolvido por: <a href=""></a></p>
-            <p>Data: </p>
-            <p>Versão: </p>
-        </footer>
-    </section>
+<br>
+    <footer class="rodape">
+        <p><img src="assets/img/colherIcon.png" alt="colher" width="200px"></p>
+        <p>Todos os direitos reservados</p>
+        <p>Desenvolvido por: Arthur Ido -- André Yuki -- Antony Schimit<a href=""></a></p>
+        <p style="font-family: monospace;">Data: 14/03</p>
+        <p style="font-family: monospace;">Versão: Beta</p>
+    </footer>
 
 
-    <script src="assets/js/script.js"></script>
+    <script src="assets/js/botaoCriar.js"></script>
 </body>
 </html>
