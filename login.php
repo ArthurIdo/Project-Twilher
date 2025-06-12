@@ -11,24 +11,29 @@ if (isset($_POST['submit'])) {
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $res = $stmt->get_result();
+    
 
-    if ($res->num_rows > 0) {
-        $usuario = $res->fetch_assoc();
-        if (password_verify($senha, $usuario['senha'])) {
-            $_SESSION['usuario'] = $usuario['nome'];
-            $_SESSION['nivel'] = $usuario['nivel'];
-            header('Location: perfil.php');
-            exit();
-        } else {
-            $erro = "Email ou senha inválidos.";
-        }
+if ($res->num_rows > 0) {
+    $usuario = $res->fetch_assoc();
+
+    if (password_verify($senha, $usuario['senha'])) {
+        $_SESSION['usuario'] = $usuario['nome'];
+        $_SESSION['nivel'] = $usuario['nivel'];
+        $_SESSION['id_usuario'] = $usuario['id']; // <- OK AQUI
+        header('Location: perfil.php');
+        exit();
     } else {
         $erro = "Email ou senha inválidos.";
     }
+} else {
+    $erro = "Email ou senha inválidos.";
+}
+
 }
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -43,7 +48,8 @@ if (isset($_POST['submit'])) {
             padding: 0;
         }
 
-        body, html {
+        body,
+        html {
             height: 100%;
             font-family: 'Kalnia', cursive;
             background-color: #E6E6E6;
@@ -108,11 +114,12 @@ if (isset($_POST['submit'])) {
         }
     </style>
 </head>
+
 <body>
     <div class="fundo">
         <main class="formularioFundo">
             <h2>Login</h2>
-            <?php if (!empty($erro)) : ?>
+            <?php if (!empty($erro)): ?>
                 <div class="alert alert-danger"><?= htmlspecialchars($erro) ?></div>
             <?php endif; ?>
             <form action="" method="POST" novalidate>
@@ -120,9 +127,12 @@ if (isset($_POST['submit'])) {
                 <input type="password" name="senha" class="form-control" placeholder="Senha" required />
                 <input type="submit" name="submit" value="Entrar" />
             </form>
+
+            <div>
+                <a href="cadastro.php" class="back-link">Registrar</a>
+            </div>
         </main>
     </div>
 </body>
+
 </html>
-
-
